@@ -33,7 +33,7 @@ jobs:
     # Cuarto paso: Build de la imagen de Docker (opcional)
     - name: Build Docker image
       run: |
-        docker build -t my-app-image .
+        docker build -t weather_model .
 
     
 
