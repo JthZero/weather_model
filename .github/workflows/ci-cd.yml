@@ -1,0 +1,51 @@
+name: CI/CD Pipeline
+
+# Ejecuta el workflow en cada push o pull request en la rama principal (main o master)
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+# Define los jobs que se ejecutarán en el pipeline
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Define el sistema operativo en el que se ejecutará
+    steps:
+    # Primer paso: Checkout del código del repositorio
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    # Segundo paso: Configurar Python
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.10'
+
+    # Tercer paso: Instalar dependencias del proyecto desde requirements.txt
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    # Cuarto paso: Build de la imagen de Docker (opcional)
+    - name: Build Docker image
+      run: |
+        docker build -t my-app-image .
+
+    
+
+  # Agrega un segundo job opcional para hacer el despliegue a producción si todo pasa bien
+  deploy:
+    needs: build  # Ejecuta este paso solo si el job "build" fue exitoso
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      
+    # Ejemplo de paso de despliegue (se puede cambiar dependiendo la plataforma donde se quiere desplegar)
+    - name: Deploy to Production (Example)
+      run: |
+        echo "Desplegando a producción..."
