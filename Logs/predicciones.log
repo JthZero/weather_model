@@ -1,0 +1,4 @@
+2024-09-30 12:30:45,123 - INFO - Iniciando predicciones...
+2024-09-30 12:30:45,678 - INFO - Modelo cargado desde weather_model/Modelo/mejor_modelo_arbol_decision.pkl
+2024-09-30 12:30:46,012 - INFO - Realizando predicciones
+2024-09-30 12:30:55,834 - INFO - Predicciones guardadas en 'weather_model/Resultados/predicciones_rain_tomorrow_general.csv'
