@@ -1,6 +1,3 @@
-from Src.preprocesamiento import preprocesar_datos
-from Src.entrenamiento import entrenar_modelo
-import pandas as pd
 import os
 import uvicorn
 
